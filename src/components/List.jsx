@@ -1,7 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 function List() {
   const letters = useSelector((state) => {
@@ -11,9 +10,8 @@ function List() {
   const selectedMember = useSelector(
     (state) => state.selectMember.selectedMember
   );
-  console.log(selectedMember);
-  //const { letters } = useContext(LettersContext);
-  //const { selectedMember } = useContext(SelectMemberContext);
+  //console.log(selectedMember);
+
   return (
     <MainList>
       {letters

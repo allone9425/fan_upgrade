@@ -1,12 +1,11 @@
-import React from "react";
-import uuid from "react-uuid";
-import List from "components/List";
-import InputForm from "components/InputForm";
-import Member from "components/Member";
 import Header from "components/Header";
+import InputForm from "components/InputForm";
+import List from "components/List";
+import Member from "components/Member";
+import uuid from "react-uuid";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedMember } from "redux/reducers/selectMemberReducer";
+import { updateSelectedMember } from "redux/modules/selectMemberReducer";
 
 function Home() {
   const dispatch = useDispatch();

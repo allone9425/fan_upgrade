@@ -1,16 +1,15 @@
-import React from "react";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import backgroundImage from "../assets/detailbg.jpg";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateLetters } from "redux/reducers/letterReducer";
+import { updateLetters } from "redux/modules/letterReducer";
 import {
-  DetailBox,
-  BigBox,
+  Avatar,
   BackBtn,
   Bg,
-  Avatar,
+  BigBox,
+  DetailBox,
   EditTextArea,
   LetterContents,
   ModfiyRemoveBtn,

@@ -1,8 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateSelectedMember } from "redux/reducers/selectMemberReducer";
+import { updateSelectedMember } from "redux/modules/selectMemberReducer";
 
 function Member() {
   const dispatch = useDispatch();

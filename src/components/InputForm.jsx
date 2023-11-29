@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FormBox, FormGroup } from "./InputForm.style";
 
 import { useDispatch } from "react-redux";
-import { addLetter } from "redux/reducers/letterReducer";
+import { addLetter } from "redux/modules/letterReducer";
 
 function InputForm({ uuid }) {
   const dispatch = useDispatch();

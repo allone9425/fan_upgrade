@@ -1,9 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "pages/Home";
 import Detail from "pages/Detail";
-import { Provider } from "react-redux"; // 추가된 부분
+import Home from "pages/Home";
+import Login from "pages/Login";
+import MyPage from "pages/MyPage";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "redux/config/configStore";
-
 const Router = () => {
   return (
     <BrowserRouter>
@@ -11,6 +12,9 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/Login" element={<Login />} />
+
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Provider>
     </BrowserRouter>
