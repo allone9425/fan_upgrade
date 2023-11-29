@@ -5,6 +5,7 @@ import MyPage from "pages/MyPage";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "redux/config/configStore";
+
 const Router = () => {
   return (
     <BrowserRouter>

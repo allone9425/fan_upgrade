@@ -6,13 +6,37 @@ const authSlice = createSlice({
   reducers: {
     toggleLogin: (state) => {
       state.isUser = !state.isUser;
+      state.isLogin = !state.isLogin;
     },
     logout: (state) => {
       state.isUser = false;
+      state.isLogin = false;
+    },
+    setLogin: (state) => {
+      state.isLogin = true;
+    },
+    setLogout: (state) => {
+      state.isLogin = false;
     },
   },
 });
 
-export const { toggleLogin } = authSlice.actions;
+/*const loginSlice = createSlice({
+  name: "login",
+  initialState: { isLogin: false },
+  reducers: {
+    setLogin: (state) => {
+      state.isLogin = true;
+    },
+    setLogout: (state) => {
+      state.isLogin = false;
+    },
+  },
+});*/
+
+export const { toggleLogin, logout, setLogin, setLogout } = authSlice.actions;
 export const selectIsUser = (state) => state.auth.isUser;
+export const selectIsLogin = (state) => state.auth.isLogin;
+//export const { setLogin, setLogout } = loginSlice.actions;
+//export const selectIsLogin = (state) => state.login.isLogin;
 export default authSlice.reducer;
