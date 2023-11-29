@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateSelectedMember } from "redux/modules/selectMemberReducer";
 
 function Home() {
+  const isUser = useSelector((state) => state.auth.isUser);
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const dispatch = useDispatch();
 
   const letters = useSelector((state) => state.letter.letters);
@@ -16,6 +18,9 @@ function Home() {
   const handleMemberSelect = (member) => {
     dispatch(updateSelectedMember(member));
   };
+
+  console.log("현재 회원가입 여부", isUser);
+  console.log("현재 로그인 여부", isLogin);
 
   return (
     <div>

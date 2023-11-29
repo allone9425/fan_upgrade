@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectIsUser, toggleLogin } from "redux/modules/authSlice";
+import { selectIsUser, setLogin, toggleLogin } from "redux/modules/authSlice";
 
 function User({ userData }) {
   const { title, button, move } = userData;
@@ -35,6 +35,7 @@ function User({ userData }) {
   const moveToHome = (e) => {
     e.preventDefault();
     if (inputValid()) {
+      dispatch(setLogin());
       navigate("/");
     }
   };

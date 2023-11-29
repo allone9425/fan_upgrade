@@ -2,11 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { isUser: true },
+  initialState: { isUser: true, isLogin: false },
   reducers: {
     toggleLogin: (state) => {
       state.isUser = !state.isUser;
-      state.isLogin = !state.isLogin;
     },
     logout: (state) => {
       state.isUser = false;
