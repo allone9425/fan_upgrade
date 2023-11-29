@@ -13,6 +13,7 @@ function Login() {
     button: "가입하기",
     move: "로그인",
   };
+  console.log(isUser);
 
   return (
     <div>

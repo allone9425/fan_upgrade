@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { selectIsUser } from "redux/modules/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsUser, toggleLogin } from "redux/modules/authSlice";
 
 function User({ userData }) {
   const { title, button, move } = userData;
-
+  const dispatch = useDispatch();
+  const isUser = useSelector(selectIsUser);
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const isUser = useSelector(selectIsUser);
+
+  const buttonHandler = () => {
+    dispatch(toggleLogin());
+  };
   return (
     <>
       <div>
@@ -52,7 +56,9 @@ function User({ userData }) {
             <button>{button}</button>
           </p>
           <p>
-            <button>{move}</button>
+            <button type="button" onClick={buttonHandler}>
+              {move}
+            </button>
           </p>
         </form>
       </div>
