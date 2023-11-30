@@ -7,6 +7,7 @@ function User({ userData }) {
   const { title, button, move } = userData;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const axios = require("axios");
   const isUser = useSelector(selectIsUser);
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +43,19 @@ function User({ userData }) {
   const buttonHandler = () => {
     dispatch(toggleLogin());
   };
+
+  // axios
+  //   .post("/user", {
+  //     firstName: "Fred",
+  //     lastName: "Flintstone",
+  //   })
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+
   return (
     <>
       <div>
@@ -87,9 +101,15 @@ function User({ userData }) {
               />
             )}
           </p>
-          <p>
-            <button onClick={moveToHome}>{button}</button>
-          </p>
+          {isUser ? (
+            <p>
+              <button onClick={moveToHome}>{button}</button>
+            </p>
+          ) : (
+            <p>
+              <button onClick={buttonHandler}>{button}</button>
+            </p>
+          )}
           <p>
             <button type="button" onClick={buttonHandler}>
               {move}

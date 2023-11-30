@@ -4,14 +4,16 @@
     "nickname": "별헤는 밤",
     "avatar": "https://raw.githubusercontent.com/allone9425/nbc_fan/56b984e3565f06b12070cc5c468f5a2d97a9b1a5/src/assets/1.svg",
     "content": "별 하나에 추억과 별 하나에 사랑과 별 하나에 쓸쓸함과 별 하나에 동경과 별 하나에 시와 별 하나에 어머니, 어머니.",
-    "writedTo": "쿠로미"
+    "writedTo": "쿠로미",
+    "id": 1
   },
   {
     "createdAt": "Wed Nov 05 2023 오전 7:45:16",
     "nickname": "서시",
     "avatar": "https://raw.githubusercontent.com/allone9425/nbc_fan/56b984e3565f06b12070cc5c468f5a2d97a9b1a5/src/assets/2.svg",
     "content": "죽는 날까지 하늘을 우러러 한 점 부끄럼이 없기를, 잎새에 이는 바람에도 나는 괴로워했다. 별을 노래하는 마음으로 모든 죽어가는 것을 사랑해야지",
-    "writedTo": "마이멜로디"
+    "writedTo": "마이멜로디",
+    "id": 2
   },
   {
     "createdAt": "Sat Nov 08 2023 오후 5:42:22",

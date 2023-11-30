@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import uuid from "react-uuid";
-import data from "../../data.json";
-
+import data from "../../db.json";
+//로그인 APi 연결 JSon Server
 export const letterSlice = createSlice({
   name: "letter",
   initialState: {
+    //리덕스 thunk
     letters: data.map((aData) => ({
       ...aData,
       id: uuid(),
@@ -16,7 +17,6 @@ export const letterSlice = createSlice({
       newLetter.id = uuid();
 
       return {
-        ...state,
         letters: [...state.letters, newLetter],
       };
     },
@@ -24,7 +24,6 @@ export const letterSlice = createSlice({
       const updatedLetters = action.payload;
 
       return {
-        ...state,
         letters: updatedLetters,
       };
     },
