@@ -15,7 +15,7 @@ const authSlice = createSlice({
       state.isUser = !state.isUser;
     },
     logout: (state) => {
-      state.isUser = false;
+      state.isUser = true;
       state.isLogin = false;
       localStorage.clear();
       //TODO: 레이아웃 하고 로그아웃 누르면 디스패치(로그아웃())
