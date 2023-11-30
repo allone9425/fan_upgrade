@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectIsUser, setLogin, toggleLogin } from "redux/modules/authSlice";
-
+// TODO : isUser 전역이 아닌 지역상태로 만들기
 function User({ userData }) {
   const { title, button, move } = userData;
   const dispatch = useDispatch();
@@ -63,17 +63,7 @@ function User({ userData }) {
         // 성공적으로 가입한 후 로그인 전환
         dispatch(toggleLogin());
       } catch (error) {
-        if (error.response && error.response.status === 401) {
-          alert("권한이 없어요!");
-        } else if (error.response && error.response.status === 404) {
-          alert("404 Not Found");
-        } else if (error.response && error.response.status === 409) {
-          alert("중복된 ID입니다");
-        } else if (error.response && error.response.status === 500) {
-          alert("500에러");
-        } else {
-          console.log(error); // 기타 에러 처리
-        }
+        alert(error.response.data.message);
       }
     }
   };
@@ -97,27 +87,24 @@ function User({ userData }) {
             accessToken: response.data.accessToken,
           };
 
-          localStorage.setItem(
-            response.data.userId,
-            JSON.stringify(userDataStorage)
-          );
+          localStorage.setItem("nowLogin", JSON.stringify(userDataStorage));
           dispatch(setLogin());
         })
         .catch(function (error) {
-          if (error.response && error.response.status === 401) {
-            alert("권한이 없어요!");
-          } else if (error.response && error.response.status === 404) {
-            alert("404 Not Found");
-          } else if (error.response && error.response.status === 409) {
-            alert("중복된 ID입니다");
-          } else if (error.response && error.response.status === 500) {
-            alert("500 Error");
-          } else {
-            console.log(error); // 기타 에러 처리
-          }
+          alert(error.response.data.message);
         });
+      setUserId("");
+      setPassword("");
+      setNickName("");
     }
   };
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("accessToken");
+  //   if (token) {
+  //     dispatch(setLogin());
+  //   }
+  // }, []);
 
   return (
     <>
