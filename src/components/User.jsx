@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,17 +8,22 @@ function User({ userData }) {
   const { title, button, move } = userData;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const axios = require("axios");
+  //const axios = require("axios");
   const isUser = useSelector(selectIsUser);
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [signUp, newSignUp] = useState({
+    id: userId,
+    password: password,
+    nickname: nickName,
+  });
 
   const inputValid = () => {
     if (
       userId === "" ||
       password === "" ||
-      (title === "회원가입" && name === "")
+      (title === "회원가입" && nickName === "")
     ) {
       if (userId === "") {
         alert("아이디를 입력해주세요.");
@@ -25,7 +31,7 @@ function User({ userData }) {
       if (password === "") {
         alert("비밀번호를 입력해주세요.");
       }
-      if (title === "회원가입" && name === "") {
+      if (title === "회원가입" && nickName === "") {
         alert("닉네임을 입력해주세요.");
       }
       return false;
@@ -33,7 +39,7 @@ function User({ userData }) {
 
     return true;
   };
-  const moveToHome = (e) => {
+  const moveToHome = async (e) => {
     e.preventDefault();
     if (inputValid()) {
       dispatch(setLogin());
@@ -44,18 +50,32 @@ function User({ userData }) {
     dispatch(toggleLogin());
   };
 
-  // axios
-  //   .post("/user", {
-  //     firstName: "Fred",
-  //     lastName: "Flintstone",
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
+  const sendSignup = async () => {
+    let response;
+    try {
+      // Axios를 사용하여 POST 요청 보내기
+      response = await axios.post(
+        "https://moneyfulpublicpolicy.co.kr/register",
+        signUp
+      );
+      // 여기서 signUp 상태 업데이트
+      newSignUp({
+        id: userId,
+        password: password,
+        nickname: nickName,
+      });
+      // 서버로부터 받은 응답을 console.log로 출력
+      console.log("서버 응답:", response);
 
+      // 성공적으로 가입한 후 로그인 전환
+      //dispatch(toggleLogin());
+    } catch (error) {
+      // 오류 처리
+      console.error("가입 오류", error);
+    }
+  };
+
+  console.log(signUp);
   return (
     <>
       <div>
@@ -92,11 +112,11 @@ function User({ userData }) {
               <input
                 type="text"
                 placeholder="닉네임"
-                value={name}
+                value={nickName}
                 minLength={1}
                 maxLength={10}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setNickName(e.target.value);
                 }}
               />
             )}
@@ -107,7 +127,9 @@ function User({ userData }) {
             </p>
           ) : (
             <p>
-              <button onClick={buttonHandler}>{button}</button>
+              <button type="button" onClick={sendSignup}>
+                {button}
+              </button>
             </p>
           )}
           <p>
