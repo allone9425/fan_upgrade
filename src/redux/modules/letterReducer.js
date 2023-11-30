@@ -1,15 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import uuid from "react-uuid";
-import data from "../../db.json";
-//로그인 APi 연결 JSon Server
+//로그인 APi 연결 JSon Server CREATE slice
+export const fetchLettersAsync = () => {
+  return async (dispatch) => {
+    try {
+      // Axios를 사용하여 데이터를 가져오기
+      const response = await axios.get("http://localhost:4000/letters");
+      const data = response.data;
+
+      // 가져온 데이터를 액션으로 디스패치
+      dispatch(updateLetters(data));
+    } catch (error) {
+      console.error("에러", error);
+    }
+  };
+};
 export const letterSlice = createSlice({
   name: "letter",
   initialState: {
-    //리덕스 thunk
-    letters: data.map((aData) => ({
-      ...aData,
-      id: uuid(),
-    })),
+    letters: [],
+    // letters: data.map((aData) => ({
+    //   ...aData,
+    //   id: uuid(),
+    // })),
   },
   reducers: {
     addLetter: (state, action) => {
@@ -31,5 +45,11 @@ export const letterSlice = createSlice({
 });
 
 export const { addLetter, updateLetters } = letterSlice.actions;
+
+export const fetchLetters = () => {
+  return (dispatch) => {
+    dispatch(fetchLettersAsync());
+  };
+};
 
 export default letterSlice.reducer;

@@ -1,16 +1,36 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
+import { fetchLetters } from "redux/modules/letterReducer";
+import styled from "styled-components";
 function List() {
   const letters = useSelector((state) => {
     return state.letter.letters;
   });
 
+  const dispatch = useDispatch();
+
   const selectedMember = useSelector(
     (state) => state.selectMember.selectedMember
   );
   //console.log(selectedMember);
+  // useEffect를 사용하여 특정 멤버가 선택될 때마다 편지 목록을 가져오도록 설정
+  useEffect(() => {
+    dispatch(fetchLetters());
+  }, [selectedMember, dispatch]);
+
+  // const fetchLetters = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:4000/letters"); // JSON Server의 엔드포인트로 변경
+  //     const letters = response.data;
+
+  //     // 기존의 updateLetters 액션을 dispatch하여 리덕스 스토어 업데이트
+  //     dispatch(updateLetters(letters));
+  //   } catch (error) {
+  //     console.error("오류", error);
+  //   }
+  // };
 
   return (
     <MainList>

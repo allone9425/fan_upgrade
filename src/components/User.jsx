@@ -13,11 +13,6 @@ function User({ userData }) {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [nickName, setNickName] = useState("");
-  const [signUp, newSignUp] = useState({
-    id: userId,
-    password: password,
-    nickname: nickName,
-  });
 
   const inputValid = () => {
     if (
@@ -48,34 +43,82 @@ function User({ userData }) {
   };
   const buttonHandler = () => {
     dispatch(toggleLogin());
+    setUserId("");
+    setPassword("");
+    setNickName("");
   };
-
+  //TODO 유효성검사 고장남 W0W
   const sendSignup = async () => {
-    let response;
-    try {
-      // Axios를 사용하여 POST 요청 보내기
-      response = await axios.post(
-        "https://moneyfulpublicpolicy.co.kr/register",
-        signUp
-      );
-      // 여기서 signUp 상태 업데이트
-      newSignUp({
-        id: userId,
-        password: password,
-        nickname: nickName,
-      });
-      // 서버로부터 받은 응답을 console.log로 출력
-      console.log("서버 응답:", response);
+    if (inputValid()) {
+      let response;
+      try {
+        // Axios를 사용하여 POST 요청 보내기
+        response = await axios.post(
+          "https://moneyfulpublicpolicy.co.kr/register",
+          { id: userId, password: password, nickname: nickName }
+        );
 
-      // 성공적으로 가입한 후 로그인 전환
-      //dispatch(toggleLogin());
-    } catch (error) {
-      // 오류 처리
-      console.error("가입 오류", error);
+        console.log("서버 응답:", response);
+        alert("회원가입 되었습니다.");
+        // 성공적으로 가입한 후 로그인 전환
+        dispatch(toggleLogin());
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          alert("권한이 없어요!");
+        } else if (error.response && error.response.status === 404) {
+          alert("404 Not Found");
+        } else if (error.response && error.response.status === 409) {
+          alert("중복된 ID입니다");
+        } else if (error.response && error.response.status === 500) {
+          alert("500에러");
+        } else {
+          console.log(error); // 기타 에러 처리
+        }
+      }
     }
   };
 
-  console.log(signUp);
+  const sendLogin = async () => {
+    //TODO 유효성검사 고장남 W0W inputValid가 유효성 검사임
+    if (inputValid()) {
+      axios
+        .post("https://moneyfulpublicpolicy.co.kr/login", {
+          id: userId,
+          password: password,
+        })
+        .then(function (response) {
+          console.log(response);
+          alert("로그인 되었습니다.");
+
+          const userDataStorage = {
+            userId: response.data.userId,
+            password: password,
+            nickname: response.data.nickname,
+            accessToken: response.data.accessToken,
+          };
+
+          localStorage.setItem(
+            response.data.userId,
+            JSON.stringify(userDataStorage)
+          );
+          dispatch(setLogin());
+        })
+        .catch(function (error) {
+          if (error.response && error.response.status === 401) {
+            alert("권한이 없어요!");
+          } else if (error.response && error.response.status === 404) {
+            alert("404 Not Found");
+          } else if (error.response && error.response.status === 409) {
+            alert("중복된 ID입니다");
+          } else if (error.response && error.response.status === 500) {
+            alert("500 Error");
+          } else {
+            console.log(error); // 기타 에러 처리
+          }
+        });
+    }
+  };
+
   return (
     <>
       <div>
@@ -123,7 +166,9 @@ function User({ userData }) {
           </p>
           {isUser ? (
             <p>
-              <button onClick={moveToHome}>{button}</button>
+              <button type="button" onClick={sendLogin}>
+                {button}
+              </button>
             </p>
           ) : (
             <p>
