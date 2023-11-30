@@ -29,7 +29,7 @@ function Home() {
 
       <Member onMemberSelect={handleMemberSelect} />
 
-      {letters.length === 0 ? <h6>남겨진 팬레터가 없습니다.</h6> : <List />}
+      <List />
     </div>
   );
 }

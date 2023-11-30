@@ -17,8 +17,8 @@ function List() {
   //console.log(selectedMember);
   // useEffect를 사용하여 특정 멤버가 선택될 때마다 편지 목록을 가져오도록 설정
   useEffect(() => {
-    dispatch(fetchLetters());
-  }, [selectedMember, dispatch]);
+    fetchLetters(dispatch);
+  }, []);
 
   // const fetchLetters = async () => {
   //   try {
@@ -32,6 +32,9 @@ function List() {
   //   }
   // };
 
+  if (letters.length === 0) {
+    return "남겨진 메세지가 없습니다.";
+  }
   return (
     <MainList>
       {letters

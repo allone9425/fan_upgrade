@@ -79,7 +79,7 @@ function User({ userData }) {
         .then(function (response) {
           console.log(response);
           alert("로그인 되었습니다.");
-
+          //Todo : 전역상태로 로컬스토리지 만들기
           const userDataStorage = {
             userId: response.data.userId,
             password: password,
