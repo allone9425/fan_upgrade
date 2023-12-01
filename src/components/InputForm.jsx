@@ -52,6 +52,7 @@ function InputForm({ uuid }) {
         content: content,
         writedTo: member,
         id: uuid(),
+        userId: userDataObj.userId,
       };
       dispatch(addLetter(newLetters));
       //setLetters([...letters, newLetters]);

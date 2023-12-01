@@ -34,13 +34,13 @@ function User({ userData }) {
 
     return true;
   };
-  const moveToHome = async (e) => {
-    e.preventDefault();
-    if (inputValid()) {
-      dispatch(setLogin());
-      navigate("/");
-    }
-  };
+  // const moveToHome = async (e) => {
+  //   e.preventDefault();
+  //   if (inputValid()) {
+  //     dispatch(setLogin());
+  //     navigate("/");
+  //   }
+  // };
   const buttonHandler = () => {
     dispatch(toggleLogin());
     setUserId("");
