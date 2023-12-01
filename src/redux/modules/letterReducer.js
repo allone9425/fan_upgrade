@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 export const fetchLetters = async (dispatch) => {
   console.log(1);
   try {
-    // Axios를 사용하여 데이터를 가져오기
+    // Axios를 사용하여 데이터를 가져오기  "http://localhost:4000/letters?_sort=createdAt&_order=asc"
     const response = await axios.get("http://localhost:4000/letters");
     const data = response.data;
     console.log(data);

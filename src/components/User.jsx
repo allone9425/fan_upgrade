@@ -60,6 +60,7 @@ function User({ userData }) {
 
         console.log("서버 응답:", response);
         alert("회원가입 되었습니다.");
+        //toast("회원가입되었습니다");
         // 성공적으로 가입한 후 로그인 전환
         dispatch(toggleLogin());
       } catch (error) {
@@ -72,7 +73,7 @@ function User({ userData }) {
     //TODO 유효성검사 고장남 W0W inputValid가 유효성 검사임
     if (inputValid()) {
       axios
-        .post("https://moneyfulpublicpolicy.co.kr/login", {
+        .post("https://moneyfulpublicpolicy.co.kr/login?expiresIn=10m", {
           id: userId,
           password: password,
         })
@@ -169,6 +170,7 @@ function User({ userData }) {
           </p>
         </form>
       </div>
+      {/* <ToastContainer /> */}
     </>
   );
 }
