@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormBox, FormGroup } from "./InputForm.style";
+import { FormBox, FormGroup, FormUserNickName } from "./InputForm.style";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addLetter } from "redux/modules/letterReducer";
@@ -85,7 +85,7 @@ function InputForm({ uuid }) {
           // onChange={(e) => setNickname(e.target.value)}
         />
         */}
-        <p>{userDataObj.nickname}</p>
+        <FormUserNickName>{userDataObj.nickname}</FormUserNickName>
       </FormGroup>
       <FormGroup>
         <label htmlFor="input-text">내용</label>

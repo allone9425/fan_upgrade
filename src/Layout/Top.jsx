@@ -14,24 +14,24 @@ function Top() {
             navigate("/");
           }}
         >
-          Home
+          메인으로
         </HomeButton>
         <div>
-          <button
+          <ProfilerButton
             onClick={() => {
               navigate("/mypage");
             }}
           >
             내 프로필
-          </button>
-          <button
+          </ProfilerButton>
+          <LogOutButton
             onClick={() => {
               dispatch(logout());
               navigate("/");
             }}
           >
             로그아웃
-          </button>
+          </LogOutButton>
         </div>
       </Header>
     </div>
@@ -46,16 +46,42 @@ const Header = styled.header`
   align-items: center;
   padding: 10px;
   background-color: pink;
-
-  button {
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
 `;
 
 const HomeButton = styled.button`
   border: none;
-  padding: 10px;
+  background-color: #d8c6de;
+  padding: 10px 20px;
   cursor: pointer;
+  &:hover {
+    background-color: #fffacd;
+  }
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+`;
+const ProfilerButton = styled.button`
+  border: none;
+  background-color: #d8c6de;
+  margin-right: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #fffacd;
+  }
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+`;
+const LogOutButton = styled.button`
+  border: none;
+  background-color: #d8c6de;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #fffacd;
+  }
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
 `;

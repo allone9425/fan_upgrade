@@ -109,9 +109,9 @@ function User({ userData }) {
 
   return (
     <S.LoginBox>
-      <div>
-        <img src={require("../assets/hello.png")} />
-      </div>
+      <S.LoginImg>
+        <img src={require("../assets/hello2.jpg")} />
+      </S.LoginImg>
       <div>
         <S.LoginForm>
           <S.LoginTitle>{title}</S.LoginTitle>

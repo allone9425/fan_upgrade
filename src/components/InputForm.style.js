@@ -77,3 +77,9 @@ export const FormGroup = styled.div`
     font-size: 20px;
   }
 `;
+
+export const FormUserNickName = styled.p`
+  font-size: 20px;
+  padding: 10px;
+  width: calc(100% - 60px);
+`;

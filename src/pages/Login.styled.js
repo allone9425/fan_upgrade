@@ -49,12 +49,6 @@ export const LoginBox = styled.div`
   box-shadow: 3px 3px 10px #aaa;
   border-radius: 15px;
   //background-color: lemonchiffon;
-  img {
-    padding-right: 20px;
-    padding-left: 15px;
-    width: 100%;
-    vertical-align: middle;
-  }
 `;
 
 export const LoginBtn = styled.button`
@@ -101,4 +95,23 @@ export const LoginTitle = styled.p`
   text-align: center;
   font-weight: bold;
   margin-bottom: 20px;
+`;
+
+export const LoginImg = styled.div`
+  height: 600px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 400px;
+  overflow: hidden;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50, 50);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
+  }
 `;
