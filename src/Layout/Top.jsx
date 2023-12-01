@@ -27,6 +27,7 @@ function Top() {
           <button
             onClick={() => {
               dispatch(logout());
+              navigate("/");
             }}
           >
             로그아웃
