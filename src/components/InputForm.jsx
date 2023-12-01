@@ -12,11 +12,22 @@ function InputForm({ uuid }) {
   const [content, setContent] = useState("");
 
   const [member, setMember] = useState("쿠로미");
+
+  //이름가져와서 고정하기
+  //let nickNameObj = JSON.parse(userData);
+  let userDataObj = userData
+    ? JSON.parse(localStorage.getItem("nowLogin"))
+    : null;
+  console.log("nickNameObj", userDataObj);
+
   const plusMember = function (e) {
     setMember(e.target.value);
   };
   console.log(userData);
+  console.log(userData.nickname);
 
+  //console.log(userData.userBox);
+  // console.log(userData.userBox.nickname);
   const onSubmitHandler = (e) => {
     //alert("연결확인");
     e.preventDefault();
@@ -24,19 +35,19 @@ function InputForm({ uuid }) {
     //매개변수 nickname과 content를 받아서,
     //두 값이 모두 존재하면 true를 반환하고,
     //그렇지 않으면 false를 반환합니다.
-    const inputValid = (nickname, content) => {
-      return nickname && content;
+    const inputValid = (content) => {
+      return content;
     };
 
     //입력값이 유효한지 확인
-    if (inputValid(nickname, content)) {
+    if (inputValid(content)) {
       const now = new Date();
       //nowKor = now.toDateString()은 현재 날짜를 문자열로 변환,
       // now.toLocaleTimeString()은 현재 시간을 문자열로 변환 해서 둘다 ``으로 합치기
       const nowKor = `${now.toDateString()} ${now.toLocaleTimeString()}`;
       const newLetters = {
         createdAt: nowKor,
-        nickname: nickname,
+        nickname: userDataObj.nickname,
         avatar: require("../assets/default.svg").default,
         content: content,
         writedTo: member,
@@ -48,9 +59,10 @@ function InputForm({ uuid }) {
       setContent("");
       setMember("");
     } else {
-      alert("이름과 내용을 입력해주세요.");
+      alert("내용을 입력해주세요.");
     }
   };
+
   return (
     <FormBox>
       <FormGroup>
@@ -63,14 +75,16 @@ function InputForm({ uuid }) {
 
       <FormGroup>
         <label htmlFor="input-name">이름</label>
-        <input
+        {/*<input
           type="text"
           id="input-name"
           maxLength={20}
           placeholder="최대 20글자까지 입력할 수 있어요!"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
+          // value={nickname}
+          // onChange={(e) => setNickname(e.target.value)}
         />
+        */}
+        <p>{userDataObj.nickname}</p>
       </FormGroup>
       <FormGroup>
         <label htmlFor="input-text">내용</label>

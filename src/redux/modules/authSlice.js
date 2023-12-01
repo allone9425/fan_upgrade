@@ -5,12 +5,19 @@ const ifThere = () => {
   console.log(userId);
   return userId !== null;
 };
+
 //시작 getUserItem userData  새로고침 해서 남아있게하기위해서
 
+const userBox = localStorage.getItem("nowLogin");
+
+// const userBox = localStorage.getItem("nowLogin")
+//   ? JSON.parse(localStorage.getItem("nowLogin"))
+//   : null;
+//const userBox = JSON.parse(localStorage.getItem("nowLogin"))?.userBox ?? null;
 const authSlice = createSlice({
   name: "auth",
   //isLogin을 false가 아닌 localStrage 기준으로 user정보 혹은 토큰이 있으면 true, false
-  initialState: { isUser: true, isLogin: ifThere(), userData: {} },
+  initialState: { isUser: true, isLogin: ifThere(), userData: userBox },
   reducers: {
     toggleLogin: (state) => {
       state.isUser = !state.isUser;
