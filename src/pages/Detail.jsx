@@ -23,8 +23,9 @@ function Detail() {
   const letters = useSelector((state) => state.letter.letters);
   const foundData = letters.find((item) => item.id === params.id);
 
-  //console.log("params", params);
-  //console.log("found", foundData);
+  console.log("params", params); //1.레터스가 없다, 2. 레터스의 아이디가 없다 . 3. 파람을 쓰는 아이디가없다
+  console.log("found", foundData);
+  console.log("letters", letters);
 
   const deleteBtn = () => {
     // 삭제 확인하기  window.confirm

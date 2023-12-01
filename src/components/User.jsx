@@ -86,9 +86,14 @@ function User({ userData }) {
             nickname: response.data.nickname,
             accessToken: response.data.accessToken,
           };
+          //redux에 사용자 데이터 저장
+          dispatch(setLogin(userDataStorage));
 
+          //로컬 스토리지에 데이터 저장
           localStorage.setItem("nowLogin", JSON.stringify(userDataStorage));
-          dispatch(setLogin());
+
+          // localStorage.setItem("nowLogin", JSON.stringify(userDataStorage));
+          // dispatch(setLogin());
         })
         .catch(function (error) {
           alert(error.response.data.message);
@@ -98,13 +103,6 @@ function User({ userData }) {
       setNickName("");
     }
   };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("accessToken");
-  //   if (token) {
-  //     dispatch(setLogin());
-  //   }
-  // }, []);
 
   return (
     <>

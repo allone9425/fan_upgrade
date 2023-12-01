@@ -45,10 +45,4 @@ export const letterSlice = createSlice({
 
 export const { addLetter, updateLetters } = letterSlice.actions;
 
-// export const fetchLetters = () => {
-//   return (dispatch) => {
-//     dispatch(fetchLettersAsync());
-//   };
-// };
-
 export default letterSlice.reducer;

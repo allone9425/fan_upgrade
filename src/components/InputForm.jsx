@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { FormBox, FormGroup } from "./InputForm.style";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addLetter } from "redux/modules/letterReducer";
 
 function InputForm({ uuid }) {
   const dispatch = useDispatch();
-
+  const userData = useSelector((state) => state.auth.userData);
   //추가하기
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
@@ -15,6 +15,7 @@ function InputForm({ uuid }) {
   const plusMember = function (e) {
     setMember(e.target.value);
   };
+  console.log(userData);
 
   const onSubmitHandler = (e) => {
     //alert("연결확인");
