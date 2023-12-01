@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { selectIsUser, setLogin, toggleLogin } from "redux/modules/authSlice";
+import * as S from "../pages/Login.styled";
+
 // TODO : isUser 전역이 아닌 지역상태로 만들기
 function User({ userData }) {
   const { title, button, move } = userData;
@@ -106,12 +108,15 @@ function User({ userData }) {
   };
 
   return (
-    <>
+    <S.LoginBox>
       <div>
-        <p>{title}</p>
-        <form>
+        <img src={require("../assets/hello.png")} />
+      </div>
+      <div>
+        <S.LoginForm>
+          <S.LoginTitle>{title}</S.LoginTitle>
           <p>
-            <input
+            <S.InputLoginID
               type="text"
               name="userId"
               placeholder="아이디"
@@ -124,7 +129,7 @@ function User({ userData }) {
             />
           </p>
           <p>
-            <input
+            <S.InputLoginPW
               type="password"
               name="password"
               minLength={4}
@@ -138,7 +143,7 @@ function User({ userData }) {
           </p>
           <p>
             {title === "회원가입" && (
-              <input
+              <S.InputNickName
                 type="text"
                 placeholder="닉네임"
                 value={nickName}
@@ -152,26 +157,26 @@ function User({ userData }) {
           </p>
           {isUser ? (
             <p>
-              <button type="button" onClick={sendLogin}>
+              <S.LoginBtn type="button" onClick={sendLogin}>
                 {button}
-              </button>
+              </S.LoginBtn>
             </p>
           ) : (
             <p>
-              <button type="button" onClick={sendSignup}>
+              <S.SignSave type="button" onClick={sendSignup}>
                 {button}
-              </button>
+              </S.SignSave>
             </p>
           )}
           <p>
-            <button type="button" onClick={buttonHandler}>
+            <S.SignUpBtn type="button" onClick={buttonHandler}>
               {move}
-            </button>
+            </S.SignUpBtn>
           </p>
-        </form>
+        </S.LoginForm>
       </div>
       {/* <ToastContainer /> */}
-    </>
+    </S.LoginBox>
   );
 }
 
