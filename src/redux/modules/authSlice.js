@@ -9,6 +9,7 @@ const ifThere = () => {
 //시작 getUserItem userData  새로고침 해서 남아있게하기위해서
 
 const userBox = localStorage.getItem("nowLogin");
+const userId = localStorage.getItem("userId");
 
 // const userBox = localStorage.getItem("nowLogin")
 //   ? JSON.parse(localStorage.getItem("nowLogin"))
@@ -17,7 +18,12 @@ const userBox = localStorage.getItem("nowLogin");
 const authSlice = createSlice({
   name: "auth",
   //isLogin을 false가 아닌 localStrage 기준으로 user정보 혹은 토큰이 있으면 true, false
-  initialState: { isUser: true, isLogin: ifThere(), userData: userBox },
+  initialState: {
+    isUser: true,
+    isLogin: ifThere(),
+    userData: userBox,
+    userId: userId,
+  },
   reducers: {
     toggleLogin: (state) => {
       state.isUser = !state.isUser;
@@ -25,15 +31,20 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isUser = true;
       state.isLogin = false;
+      state.userId = null;
       localStorage.clear();
     },
     setLogin: (state, action) => {
       state.isLogin = true;
       state.userData = action.payload;
       console.log(action.payload);
+      state.userId = action.payload.userId; // userId 추가
+      console.log(action.payload.userId);
+      localStorage.setItem("userId", action.payload.userId); // localStorage에 userId 저장
     },
     setLogout: (state) => {
       state.isLogin = false;
+      state.userId = null;
       state.userData = {};
     },
   },
@@ -43,4 +54,5 @@ export const { toggleLogin, logout, setLogin, setLogout } = authSlice.actions;
 export const selectIsUser = (state) => state.auth.isUser;
 export const selectIsLogin = (state) => state.auth.isLogin;
 export const selectUserData = (state) => state.auth.userData;
+export const selectUserId = (state) => state.auth.userId;
 export default authSlice.reducer;

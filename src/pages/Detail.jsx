@@ -21,8 +21,8 @@ function Detail() {
   const letters = useSelector((state) => state.letter.letters);
 
   const foundData = letters.find((item) => item.id === params.id);
-  const userId = useSelector((state) => state.letter.userId); // 현재 로그인한 사용자의 ID
-
+  // 현재 로그인한 사용자의 ID
+  const userId = useSelector((state) => state.auth.userId);
   const deleteBtn = () => {
     const alertDelete = window.confirm("정말 삭제할래요?");
     if (alertDelete) {
