@@ -6,6 +6,7 @@ const initialState = {
   isLoding: false,
   isError: false,
   error: null,
+  userId: null,
 };
 
 export const __getLetters = createAsyncThunk(

@@ -19,7 +19,9 @@ function Detail() {
   const navigate = useNavigate();
   const params = useParams();
   const letters = useSelector((state) => state.letter.letters);
+
   const foundData = letters.find((item) => item.id === params.id);
+  const userId = useSelector((state) => state.letter.userId); // 현재 로그인한 사용자의 ID
 
   const deleteBtn = () => {
     const alertDelete = window.confirm("정말 삭제할래요?");
@@ -56,7 +58,7 @@ function Detail() {
       setEditing("");
     }
   };
-
+  console.log("userId", userId);
   return (
     <>
       {foundData && (
@@ -90,10 +92,13 @@ function Detail() {
                   <button onClick={cancelBtn}>취소</button>
                 </>
               ) : (
-                <>
-                  <button onClick={modifyBtn}>수정</button>
-                  <button onClick={deleteBtn}>삭제</button>
-                </>
+                // 본인이 작성한 게시물일 경우에만 수정, 삭제 버튼 노출
+                foundData.userId === userId && (
+                  <>
+                    <button onClick={modifyBtn}>수정</button>
+                    <button onClick={deleteBtn}>삭제</button>
+                  </>
+                )
               )}
             </ModfiyRemoveBtn>
           </DetailBox>
