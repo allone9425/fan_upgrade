@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FormBox, FormGroup, FormUserNickName } from "./InputForm.style";
-
 import { useDispatch, useSelector } from "react-redux";
 import { addLetter } from "redux/modules/letterReducer";
+import { getFormattedDate } from "utils/date";
+import { FormBox, FormGroup, FormUserNickName } from "./InputForm.style";
 
 function InputForm({ uuid }) {
   const dispatch = useDispatch();
@@ -38,15 +38,12 @@ function InputForm({ uuid }) {
     const inputValid = (content) => {
       return content;
     };
-
+    const currentDate = new Date();
+    const formattedDate = getFormattedDate(currentDate);
     //입력값이 유효한지 확인
     if (inputValid(content)) {
-      const now = new Date();
-      //nowKor = now.toDateString()은 현재 날짜를 문자열로 변환,
-      // now.toLocaleTimeString()은 현재 시간을 문자열로 변환 해서 둘다 ``으로 합치기
-      const nowKor = `${now.toDateString()} ${now.toLocaleTimeString()}`;
       const newLetters = {
-        createdAt: nowKor,
+        createdAt: formattedDate,
         nickname: userDataObj.nickname,
         avatar: require("../assets/default.svg").default,
         content: content,

@@ -12,7 +12,9 @@ export const __getLetters = createAsyncThunk(
   "letters/get",
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.get("http://localhost:4000/letters");
+      const response = await axios.get(
+        "http://localhost:4000/letters?_sort=createdAt&_order=desc"
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -27,6 +29,35 @@ export const addLetter = createAsyncThunk(
       const response = await axios.post(
         "http://localhost:4000/letters",
         newLetters
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteLetter = createAsyncThunk(
+  "letters/delete",
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`http://localhost:4000/letters/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const editLetter = createAsyncThunk(
+  "letters/edit",
+  async ({ id, newContent }, thunkAPI) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:4000/letters/${id}`,
+        {
+          content: newContent,
+        }
       );
       return response.data;
     } catch (error) {
@@ -57,6 +88,19 @@ export const letterSlice = createSlice({
     },
     [addLetter.fulfilled]: (state, action) => {
       state.letters.push(action.payload);
+    },
+    [deleteLetter.fulfilled]: (state, action) => {
+      state.letters = state.letters.filter(
+        (letter) => letter.id !== action.payload
+      );
+    },
+    [editLetter.fulfilled]: (state, action) => {
+      const index = state.letters.findIndex(
+        (letter) => letter.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.letters[index] = action.payload;
+      }
     },
   },
 });
