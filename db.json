@@ -73,39 +73,12 @@
       "userId": "banana1111"
     },
     {
-      "createdAt": "23. 12. 03. 오후 07:49",
-      "nickname": "바나나",
-      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
-      "content": "ㄴㄴㄴㄴ",
-      "writedTo": "쿠로미",
-      "id": "f45fdae9-7527-5d56-5f7a-262feff8c5f6",
-      "userId": "banana1111"
-    },
-    {
-      "createdAt": "23. 12. 03. 오후 07:55",
-      "nickname": "바나나",
-      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
-      "content": "ㅊㅊㄹ",
-      "writedTo": "쿠로미",
-      "id": "cc801487-a4e4-07de-be3d-9dd95a78a46f",
-      "userId": "banana1111"
-    },
-    {
       "createdAt": "23. 12. 03. 오후 07:59",
       "nickname": "바나나",
       "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
-      "content": "와우",
+      "content": "오늘도 좋은하루!!",
       "writedTo": "쿠로미",
       "id": "26168c4a-3a14-93d3-bfb1-ea39c84267a9",
-      "userId": "banana1111"
-    },
-    {
-      "createdAt": "23. 12. 03. 오후 08:16",
-      "nickname": "바나나",
-      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
-      "content": "ㄺㄹㄹ",
-      "writedTo": "쿠로미",
-      "id": "3629a8de-97dc-6752-d1e6-826089342ea3",
       "userId": "banana1111"
     }
   ]
