@@ -2,39 +2,36 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { fetchLetters } from "redux/modules/letterReducer";
+import { __getLetters } from "redux/modules/letterReducer";
 import styled from "styled-components";
-function List() {
-  const letters = useSelector((state) => {
-    return state.letter.letters;
-  });
 
+function List() {
   const dispatch = useDispatch();
 
+  // 수정 시작: useSelector가 컴포넌트 최상단에서 호출되도록 수정
+  const { isLoding, error, letters } = useSelector((state) => state.letter);
+
+  // 수정 시작: useEffect를 컴포넌트 최상단에서 호출되도록 수정
+  useEffect(() => {
+    dispatch(__getLetters());
+  }, [dispatch]); // dispatch를 의존성 배열에 추가
+
+  // 수정 끝
   const selectedMember = useSelector(
     (state) => state.selectMember.selectedMember
   );
-  //console.log(selectedMember);
-  // useEffect를 사용하여 특정 멤버가 선택될 때마다 편지 목록을 가져오도록 설정
-  useEffect(() => {
-    fetchLetters(dispatch);
-  }, []);
+  if (isLoding) {
+    return <div>로딩 중...</div>;
+  }
 
-  // const fetchLetters = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:4000/letters"); // JSON Server의 엔드포인트로 변경
-  //     const letters = response.data;
-
-  //     // 기존의 updateLetters 액션을 dispatch하여 리덕스 스토어 업데이트
-  //     dispatch(updateLetters(letters));
-  //   } catch (error) {
-  //     console.error("오류", error);
-  //   }
-  // };
+  if (error) {
+    return <div>{error.message}</div>;
+  }
 
   if (letters.length === 0) {
     return "남겨진 메세지가 없습니다.";
   }
+
   return (
     <MainList>
       {letters
@@ -69,6 +66,8 @@ function List() {
 }
 
 export default List;
+
+// 이하 생략...
 
 const MainBox = styled.div`
   // border: 1px solid #aaa;

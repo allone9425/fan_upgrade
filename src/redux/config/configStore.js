@@ -9,6 +9,10 @@ const store = configureStore({
     selectMember: selectMemberReducer,
     auth: authSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;
