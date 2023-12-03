@@ -5,12 +5,12 @@ function Login() {
   const isUser = useSelector((state) => state.auth.isUser);
   const isLogin = useSelector((state) => state.auth.isLogin);
   const LoginData = {
-    title: "로그인",
+    title: "안녕하세요!",
     button: "로그인하기",
     move: "회원가입",
   };
   const SignUpData = {
-    title: "회원가입",
+    title: "환영합니다!",
     button: "가입하기",
     move: "로그인",
   };

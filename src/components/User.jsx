@@ -142,7 +142,7 @@ function User({ userData }) {
             />
           </p>
           <p>
-            {title === "회원가입" && (
+            {title === "환영합니다!" && (
               <S.InputNickName
                 type="text"
                 placeholder="닉네임"
