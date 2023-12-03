@@ -47,6 +47,33 @@
       "content": "너를 좋아하는 마음은 오로지 나의 것이요. 나의 그리움은 나 혼자만의 것으로도 차고 넘치니까.",
       "writedTo": "쿠로미",
       "id": "6"
+    },
+    {
+      "createdAt": "Sun Dec 03 2023 오후 6:44:09",
+      "nickname": "애플",
+      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
+      "content": "ㄱㄱㅇ",
+      "writedTo": "마이멜로디",
+      "id": "15dd1b01-20b2-436a-7c7c-9b32503badbe",
+      "userId": "apple1111"
+    },
+    {
+      "createdAt": "Sun Dec 03 2023 오후 6:46:45",
+      "nickname": "애플",
+      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
+      "content": "안녕하세요 쿠로미님 파이팅이에요 ",
+      "writedTo": "쿠로미",
+      "id": "ca0a61a9-8835-e527-387e-0ce1b9a76510",
+      "userId": "apple1111"
+    },
+    {
+      "createdAt": "Sun Dec 03 2023 오후 6:46:53",
+      "nickname": "애플",
+      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
+      "content": "귀여운 마이멜로디!",
+      "writedTo": "마이멜로디",
+      "id": "ed82c23f-679b-0f87-986a-3fb4bd44260a",
+      "userId": "apple1111"
     }
   ]
 }

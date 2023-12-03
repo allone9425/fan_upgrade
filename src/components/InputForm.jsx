@@ -28,7 +28,7 @@ function InputForm({ uuid }) {
 
   //console.log(userData.userBox);
   // console.log(userData.userBox.nickname);
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     //alert("연결확인");
     e.preventDefault();
     //추가하기 유효성 검사
@@ -54,11 +54,15 @@ function InputForm({ uuid }) {
         id: uuid(),
         userId: userDataObj.userId,
       };
-      dispatch(addLetter(newLetters));
-      //setLetters([...letters, newLetters]);
-      setNickname("");
-      setContent("");
-      setMember("");
+      dispatch(addLetter(newLetters))
+        .then(() => {
+          setNickname("");
+          setContent("");
+          setMember("");
+        })
+        .catch((error) => {
+          alert("메세지 전송에 실패했습니다.");
+        });
     } else {
       alert("내용을 입력해주세요.");
     }
