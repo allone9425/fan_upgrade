@@ -79,7 +79,6 @@ function User({ userData }) {
           password: password,
         })
         .then(function (response) {
-          console.log(response);
           alert("로그인 되었습니다.");
 
           const userDataStorage = {

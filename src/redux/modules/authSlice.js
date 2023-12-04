@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const ifThere = () => {
   const userId = localStorage.getItem("nowLogin");
-  console.log(userId);
+
   return userId !== null;
 };
 
