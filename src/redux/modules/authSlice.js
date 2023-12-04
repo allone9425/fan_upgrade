@@ -23,6 +23,8 @@ const authSlice = createSlice({
     isLogin: ifThere(),
     userData: userBox,
     userId: userId,
+    avatar:
+      "https://raw.githubusercontent.com/allone9425/nbc_fan/56b984e3565f06b12070cc5c468f5a2d97a9b1a5/src/assets/default.svg",
   },
   reducers: {
     toggleLogin: (state) => {
@@ -37,9 +39,9 @@ const authSlice = createSlice({
     setLogin: (state, action) => {
       state.isLogin = true;
       state.userData = action.payload;
-      console.log(action.payload);
+      state.avatar = action.payload.avatar;
       state.userId = action.payload.userId; // userId 추가
-      console.log(action.payload.userId);
+
       localStorage.setItem("userId", action.payload.userId); // localStorage에 userId 저장
     },
     setLogout: (state) => {

@@ -7,16 +7,16 @@ import styled from "styled-components";
 
 function List() {
   const dispatch = useDispatch();
-
-  // 수정 시작: useSelector가 컴포넌트 최상단에서 호출되도록 수정
   const { isLoding, error, letters } = useSelector((state) => state.letter);
 
-  // 수정 시작: useEffect를 컴포넌트 최상단에서 호출되도록 수정
+  // authSlice에서 userId와 userData를 가져옴
+  const { userId, userData } = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(__getLetters());
-  }, [dispatch]); // dispatch를 의존성 배열에 추가
+    console.log(userData.avatar);
+  }, [dispatch, userData]);
 
-  // 수정 끝
   const selectedMember = useSelector(
     (state) => state.selectMember.selectedMember
   );
@@ -31,7 +31,10 @@ function List() {
   if (letters.length === 0) {
     return "남겨진 메세지가 없습니다.";
   }
-
+  let userDataObj = userData
+    ? JSON.parse(localStorage.getItem("nowLogin"))
+    : null;
+  console.log("nickNameObj", userDataObj);
   return (
     <MainList>
       {letters
@@ -43,16 +46,25 @@ function List() {
         })
         .map(function (item) {
           const color = item.writedTo === "쿠로미" ? "#A1619D" : "#E86F9A";
+
+          // 사용자 ID가 일치하는 경우 userData에서 가져온 프로필 사진과 이름을 사용
+          const avatar = item.userId === userId ? userData.avatar : item.avatar;
+          console.log("아이템", item);
+          console.log("userData", userData);
+          console.log("userId", userId);
+          const nickname =
+            item.userId === userId ? userData.nickname : item.nickname;
+
           return (
             <Link to={`/detail/${item.id}`} key={item.id}>
               <MainBox key={item.id}>
                 <ToWho color={color}>To. {item.writedTo}</ToWho>
                 <section>
                   <p>
-                    <img src={item.avatar} alt="사진" />
+                    <img src={avatar} alt="사진" />
                   </p>
                   <NameData>
-                    <h3>{item.nickname}</h3>
+                    <h3>{nickname}</h3>
                     <p>{item.createdAt}</p>
                   </NameData>
                 </section>
@@ -66,8 +78,6 @@ function List() {
 }
 
 export default List;
-
-// 이하 생략...
 
 const MainBox = styled.div`
   // border: 1px solid #aaa;

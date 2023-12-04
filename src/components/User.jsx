@@ -88,6 +88,7 @@ function User({ userData }) {
             password: password,
             nickname: response.data.nickname,
             accessToken: response.data.accessToken,
+            avatar: response.data.avatar,
           };
           //redux에 사용자 데이터 저장
           dispatch(setLogin(userDataStorage));
