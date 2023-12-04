@@ -14,7 +14,7 @@ export const __getLetters = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/letters?_sort=createdAt&_order=desc"
+        "https://crawling-spiffy-backbone.glitch.me/letters?_sort=createdAt&_order=desc"
       );
       return response.data;
     } catch (error) {
@@ -28,7 +28,7 @@ export const addLetter = createAsyncThunk(
   async (newLetters, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/letters",
+        "https://crawling-spiffy-backbone.glitch.me/letters",
         newLetters
       );
       return response.data;
@@ -42,7 +42,9 @@ export const deleteLetter = createAsyncThunk(
   "letters/delete",
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`http://localhost:4000/letters/${id}`);
+      await axios.delete(
+        `https://crawling-spiffy-backbone.glitch.me/letters/${id}`
+      );
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -55,7 +57,7 @@ export const editLetter = createAsyncThunk(
   async ({ id, newContent }, thunkAPI) => {
     try {
       const response = await axios.patch(
-        `http://localhost:4000/letters/${id}`,
+        `https://crawling-spiffy-backbone.glitch.me/letters/${id}`,
         {
           content: newContent,
         }
