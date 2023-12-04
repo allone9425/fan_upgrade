@@ -49,9 +49,7 @@ function List() {
 
           // 사용자 ID가 일치하는 경우 userData에서 가져온 프로필 사진과 이름을 사용
           const avatar = item.userId === userId ? userData.avatar : item.avatar;
-          console.log("아이템", item);
-          console.log("userData", userData);
-          console.log("userId", userId);
+
           const nickname =
             item.userId === userId ? userData.nickname : item.nickname;
 

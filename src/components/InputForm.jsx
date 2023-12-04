@@ -18,13 +18,10 @@ function InputForm({ uuid }) {
   let userDataObj = userData
     ? JSON.parse(localStorage.getItem("nowLogin"))
     : null;
-  console.log("nickNameObj", userDataObj);
 
   const plusMember = function (e) {
     setMember(e.target.value);
   };
-  console.log(userData);
-  console.log(userData.nickname);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
