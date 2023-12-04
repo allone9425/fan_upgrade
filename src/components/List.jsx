@@ -14,7 +14,6 @@ function List() {
 
   useEffect(() => {
     dispatch(__getLetters());
-    console.log(userData.avatar);
   }, [dispatch, userData]);
 
   const selectedMember = useSelector(
@@ -34,7 +33,7 @@ function List() {
   let userDataObj = userData
     ? JSON.parse(localStorage.getItem("nowLogin"))
     : null;
-  console.log("nickNameObj", userDataObj);
+
   return (
     <MainList>
       {letters
