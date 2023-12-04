@@ -74,7 +74,7 @@ function User({ userData }) {
   const sendLogin = async () => {
     if (inputValid()) {
       axios
-        .post("https://moneyfulpublicpolicy.co.kr/login?expiresIn=10m", {
+        .post("https://moneyfulpublicpolicy.co.kr/login?expiresIn=50m", {
           id: userId,
           password: password,
         })
