@@ -19,7 +19,7 @@
 - redux toolkit과 thunk 사용
 - 마이페이지에서 닉네임 변경과 사진 변경을 할 수 있음
 
-## 사용한 기술 : react, redux, uuid, styled-components, redux toolkit, redux thunk
+## 사용한 기술 : react, redux, uuid, styled-components, redux toolkit, redux thunk, json-Server
 
 ## 화면 구성 :
 - [로그인 화면]
