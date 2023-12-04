@@ -89,6 +89,15 @@
       "writedTo": "마이멜로디",
       "id": "1d9b886b-ea67-b364-d7c7-801a207acfc6",
       "userId": "kiwi1111"
+    },
+    {
+      "createdAt": "23. 12. 04. 오전 11:04",
+      "nickname": "가나다",
+      "avatar": "/static/media/default.e04937dc902f29ef03359aafbde52cfd.svg",
+      "content": "안녕",
+      "writedTo": "쿠로미",
+      "id": "ed246aa4-5a5b-710c-c134-f747d58eaf8a",
+      "userId": "apple1111"
     }
   ]
 }
