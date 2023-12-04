@@ -22,16 +22,17 @@
 ## 사용한 기술 : react, redux, uuid, styled-components, redux toolkit, redux thunk
 
 ## 화면 구성 :
+- [로그인 화면]
+![image](https://github.com/allone9425/fan_upgrade/assets/143374855/aaa76d82-4e52-4303-ae3d-b170bc7e5fd6)
+
+- [회원가입 화면]
+![image](https://github.com/allone9425/fan_upgrade/assets/143374855/d036d1c7-1f27-41a3-bf01-f092ec6891fc)
 
 - [Home 화면]
-  ![image](https://github.com/allone9425/nbc_fan/assets/143374855/53f7b497-dfc3-4dac-aee9-71d4b8d1dfb8)
+ ![image](https://github.com/allone9425/fan_upgrade/assets/143374855/258fca38-403d-41bc-b365-50bd696ae0e0)
 
 - [Detail 화면]
   ![image](https://github.com/allone9425/nbc_fan/assets/143374855/49b1c91c-d724-44ce-bead-618c8b4338ee)
 
-## 사용 예시 데모 :
-
-<p><img src= "https://github.com/allone9425/nbc_fan/blob/main/demo.gif?raw=true" ></p>
-<p>Gif 라서 화질이 깨집니다! 아래 썸네일을 클릭하시면 유튜브 동영상으로 이동합니다! </p>
-
-[![Video Label](http://img.youtube.com/vi/YeunVX7PiE4/0.jpg)](https://youtu.be/YeunVX7PiE4?si=Rs7yKjF1sxvRJK61)
+- [My Page 화면]
+ ![image](https://github.com/allone9425/fan_upgrade/assets/143374855/032a98d8-271b-466d-a337-6e315212db7a)
