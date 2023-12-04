@@ -14,7 +14,7 @@ function InputForm({ uuid }) {
   const [member, setMember] = useState("쿠로미");
 
   //이름가져와서 고정하기
-  //let nickNameObj = JSON.parse(userData);
+
   let userDataObj = userData
     ? JSON.parse(localStorage.getItem("nowLogin"))
     : null;
@@ -26,10 +26,7 @@ function InputForm({ uuid }) {
   console.log(userData);
   console.log(userData.nickname);
 
-  //console.log(userData.userBox);
-  // console.log(userData.userBox.nickname);
   const onSubmitHandler = async (e) => {
-    //alert("연결확인");
     e.preventDefault();
     //추가하기 유효성 검사
     //매개변수 nickname과 content를 받아서,

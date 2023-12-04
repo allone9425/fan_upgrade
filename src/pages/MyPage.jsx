@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function MyPage() {
@@ -8,7 +9,7 @@ function MyPage() {
   const [editedNickname, setEditedNickname] = useState(""); // 수정된 닉네임
   const [userProfile, setUserProfile] = useState(null); // 사용자 프로필 정보
   const [selectedFile, setSelectedFile] = useState(null); // 선택된 파일
-
+  const navigate = useNavigate();
   // 페이지가 로드되었을 때 사용자 프로필 정보를 가져옴
   useEffect(() => {
     const getUserProfile = async () => {
@@ -107,6 +108,8 @@ function MyPage() {
 
     // 수정 상태를 해제
     setEdit(false);
+
+    navigate("/");
   };
 
   // 닉네임 입력창의 값이 변경되었을 때 실행되는 함수

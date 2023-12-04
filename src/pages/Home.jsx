@@ -19,9 +19,6 @@ function Home() {
     dispatch(updateSelectedMember(member));
   };
 
-  console.log("현재 회원가입 여부", isUser);
-  console.log("현재 로그인 여부", isLogin);
-
   return (
     <div>
       <Header />

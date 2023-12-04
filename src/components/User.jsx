@@ -49,7 +49,7 @@ function User({ userData }) {
     setPassword("");
     setNickName("");
   };
-  //TODO 유효성검사 고장남 W0W
+
   const sendSignup = async () => {
     if (inputValid()) {
       let response;
@@ -72,7 +72,6 @@ function User({ userData }) {
   };
 
   const sendLogin = async () => {
-    //TODO 유효성검사 고장남 W0W inputValid가 유효성 검사임
     if (inputValid()) {
       axios
         .post("https://moneyfulpublicpolicy.co.kr/login?expiresIn=10m", {
